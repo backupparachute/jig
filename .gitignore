@@ -3,6 +3,7 @@
 .classpath
 .settings
 target/
+.gradle/
 
 # Package Files #
 *.jar
