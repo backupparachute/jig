@@ -4,6 +4,7 @@
 .settings
 target/
 .gradle/
+build/
 
 # Package Files #
 *.jar
