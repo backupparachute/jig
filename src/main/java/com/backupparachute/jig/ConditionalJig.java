@@ -1,10 +1,10 @@
 package com.backupparachute.jig;
 
-import com.backupparachute.jig.predicate.JigPredicate;
+import org.apache.commons.collections.Predicate;
 
 public class ConditionalJig implements Jig {
 
-	private JigPredicate predicate;
+	private Predicate predicate;
 	private Jig positiveJig;
 	private Jig negativeJig;
 	public void setPositiveJig(Jig jig) {
@@ -15,8 +15,8 @@ public class ConditionalJig implements Jig {
 		this.negativeJig = jig;
 	}
 
-	public void setPredicate(JigPredicate jigPredicate) {
-		this.predicate = jigPredicate;
+	public void setPredicate(Predicate predicate) {
+		this.predicate = predicate;
 	}
 
 	@Override
