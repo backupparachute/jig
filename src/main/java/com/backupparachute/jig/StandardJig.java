@@ -8,6 +8,12 @@ public class StandardJig implements Jig {
 
 	private String template;
 	private JigPattern jigPattern = new WorkerJigPattern();
+	public StandardJig() {
+	}
+	public StandardJig(String template) {
+		this.template = template;
+	}
+	
 	@Override
 	public String render(final Object model) {
 		return getJigPattern().apply(template, model, new ModelPatternCallback());

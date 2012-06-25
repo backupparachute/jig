@@ -26,8 +26,8 @@ public class JigTest {
 	public void testComplexTemplate() {
  		
 		String template = "" +
-//				"{{title}}" +
-//				"\n" +
+				"{{title}}" +
+				"\n" +
 				"{{header}}" +
 				"\n" +
 				"Items:\n" +
@@ -38,18 +38,17 @@ public class JigTest {
 				"{{footer}}" +
 				"";
 		
-		String output = "" +
+		String verify = "" +
 				"Company Foo Receipt\n" +
 				"\n" +
 				"Header Info\n" +
 				"\n" +
 				"Items:\n" +
-				"\n" +
 				"123:item 1\n" +
 				"456:item 2\n" +
 				"789:item 3\n" +
 				"\n" +
-				"Footer info:\n" +
+				"Footer:\n" +
 				"addr line 1\n" +
 				"addr line 2\n" +
 				"stl, mo 63124\n" +
@@ -64,23 +63,26 @@ public class JigTest {
 				"{{city}}, {{state}} {{zip}}\n" +
 				"";
 		
-		StandardJig footerJig = new StandardJig();
-		footerJig.setTemplate(footerTemplate);
+		StaticJig titleJig = new StaticJig("Company Foo Receipt\n");
+		
+		StandardJig footerJig = new StandardJig(footerTemplate);
 		
 		CompositeJig comp = new CompositeJig();
+		comp.addJig("title", titleJig);
 		comp.setTemplate(template);
 		comp.addJig("footer", footerJig);
-		StaticJig headerJig = new StaticJig();
-		headerJig.setTemplate("Header Info\n");
+		StaticJig headerJig = new StaticJig("Header Info\n");
 		comp.addJig("header", headerJig);
 		
 		IterableJig iter = new IterableJig();
-		StandardJig itemJig = new StandardJig();
-		itemJig.setTemplate(itemsTemplate);
+		StandardJig itemJig = new StandardJig(itemsTemplate);
 		iter.setJig(itemJig);
 		comp.addJig("items", iter);
 		
-		System.out.println(comp.render(model));
+		String output = comp.render(model);
+		
+		System.out.printf("'%s'",output);
+		assertEquals(verify, output);
 		
 	}
 
