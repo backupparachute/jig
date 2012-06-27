@@ -21,7 +21,7 @@ public class ConditionalJig implements Jig {
 
 	@Override
 	public String render(Object model) {
-		if (predicate.evaluate(model)) return positiveJig.render(model);
+		if (null != predicate && predicate.evaluate(model)) return positiveJig.render(model);
 		
 		return negativeJig.render(model);
 	}

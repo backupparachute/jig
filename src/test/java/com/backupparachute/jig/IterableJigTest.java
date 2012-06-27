@@ -14,8 +14,7 @@ public class IterableJigTest {
 
 	@Test
 	public void testOutput() {
-		StandardJig jig = new StandardJig("{{name}}"); 
-		IterableJig iter = new IterableJig(jig);
+		IterableJig iter = new IterableJig(new StandardJig("{{name}}"));
 		Map model = new HashMap();
 		model.put("name", "foo");
 		
@@ -31,8 +30,7 @@ public class IterableJigTest {
 	
 	@Test
 	public void testSeparator() {
-		StandardJig jig = new StandardJig("{{name}}"); 
-		IterableJig iter = new IterableJig(jig);
+		IterableJig iter = new IterableJig(new StandardJig("{{name}}"));
 		iter.setSeparator(", ");
 		Map model = new HashMap();
 		model.put("name", "foo");
@@ -49,8 +47,7 @@ public class IterableJigTest {
 	
 	@Test
 	public void testNonCollection() {
-		StandardJig jig = new StandardJig("{{name}}"); 
-		IterableJig iter = new IterableJig(jig);
+		IterableJig iter = new IterableJig(new StandardJig("{{name}}"));
 		iter.setSeparator(", ");
 		Map model = new HashMap();
 		model.put("name", "foo");
@@ -60,8 +57,7 @@ public class IterableJigTest {
 	
 	@Test
 	public void testNull() {
-		StandardJig jig = new StandardJig("{{name}}"); 
-		IterableJig iter = new IterableJig(jig);
+		IterableJig iter = new IterableJig(new StandardJig("{{name}}"));
 		
 		assertEquals("", iter.render(null));
 	}
