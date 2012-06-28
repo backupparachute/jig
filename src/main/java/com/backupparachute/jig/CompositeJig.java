@@ -5,14 +5,14 @@ import java.util.Map;
 
 import com.backupparachute.jig.pattern.JigPattern;
 import com.backupparachute.jig.pattern.PatternCallback;
-import com.backupparachute.jig.pattern.WorkerJigPattern;
+import com.backupparachute.jig.pattern.DoubleCurlyJigPattern;
 import com.backupparachute.jig.util.ModelHelper;
 import com.backupparachute.jig.util.ObjectModelHelper;
 
 public class CompositeJig implements Jig {
 	
 	private Map<String, Jig> jigs = new HashMap();
-	private JigPattern jigPattern = new WorkerJigPattern();
+	private JigPattern jigPattern = new DoubleCurlyJigPattern();
 	private String template;
 	private ModelHelper modelHelper = new ObjectModelHelper();
 	

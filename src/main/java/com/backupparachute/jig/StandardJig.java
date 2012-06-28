@@ -2,12 +2,12 @@ package com.backupparachute.jig;
 
 import com.backupparachute.jig.pattern.JigPattern;
 import com.backupparachute.jig.pattern.ModelPatternCallback;
-import com.backupparachute.jig.pattern.WorkerJigPattern;
+import com.backupparachute.jig.pattern.DoubleCurlyJigPattern;
 
 public class StandardJig implements Jig {
 
 	private String template;
-	private JigPattern jigPattern = new WorkerJigPattern();
+	private JigPattern jigPattern = new DoubleCurlyJigPattern();
 	public StandardJig() {
 	}
 	public StandardJig(String template) {

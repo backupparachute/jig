@@ -3,12 +3,12 @@ package com.backupparachute.jig.pattern;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class WorkerJigPattern implements JigPattern {
+public class DoubleCurlyJigPattern implements JigPattern {
 	
 	private static final String REGEX_KEY_PATTERN = "\\{\\{(.*?)\\}\\}";
 	private Pattern pattern;
 	
-	public WorkerJigPattern() {
+	public DoubleCurlyJigPattern() {
 		this.pattern = Pattern.compile(REGEX_KEY_PATTERN);
 	}
 
