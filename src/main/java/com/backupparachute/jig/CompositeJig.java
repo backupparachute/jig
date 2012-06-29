@@ -36,6 +36,10 @@ public class CompositeJig implements Jig {
 		jigs.put(key, jig);
 	}
 	
+	public void setJigs(Map jigs) {
+		this.jigs = jigs;
+	}
+	
 	public Map getJigs() {
 		return jigs;
 	}
