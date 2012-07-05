@@ -3,9 +3,9 @@ package com.backupparachute.jig;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.backupparachute.jig.pattern.DoubleCurlyJigPattern;
 import com.backupparachute.jig.pattern.JigPattern;
 import com.backupparachute.jig.pattern.PatternCallback;
-import com.backupparachute.jig.pattern.DoubleCurlyJigPattern;
 import com.backupparachute.jig.util.ModelHelper;
 import com.backupparachute.jig.util.ObjectModelHelper;
 
@@ -24,8 +24,7 @@ public class CompositeJig implements Jig {
 			public String handle(String key, Object model) {
 				Jig jig = (Jig) getJigs().get(key);
 				if (null != jig) {
-					Object o = getModelHelper().findValue(model, key);
-					return jig.render(o);
+					return jig.render(getModelHelper().findValue(model, key));
 				}
 				
 				return "";
@@ -35,6 +34,10 @@ public class CompositeJig implements Jig {
 	
 	public void addJig(String key, Jig jig) {
 		jigs.put(key, jig);
+	}
+	
+	public void setJigs(Map jigs) {
+		this.jigs = jigs;
 	}
 	
 	public Map getJigs() {
