@@ -7,3 +7,6 @@ Simple java based templating system
 
     gradle clean jar
 
+## License ##
+
+- MIT License
